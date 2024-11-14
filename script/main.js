@@ -15,6 +15,27 @@ let totalPoints = {
     totalSerd: 0,
 }
 
+// Fonction pour enregistrer les points dans localStorage
+function savePointsToLocalStorage() {
+    localStorage.setItem('totalPoints', JSON.stringify(totalPoints)); // Sauvegarde dans le localStorage
+}
+
+// Fonction pour charger les points depuis localStorage
+function loadPointsFromLocalStorage() {
+    const savedPoints = localStorage.getItem('totalPoints');
+    if (savedPoints) {
+        totalPoints = JSON.parse(savedPoints); // Récupère les points et les affecte
+        // Met à jour l'affichage
+        pointsGry.textContent = `${totalPoints.totalGry} points pour Gryffondor`;
+        pointsSerp.textContent = `${totalPoints.totalSerp} points pour Serpentard`;
+        pointsPouf.textContent = `${totalPoints.totalPouf} points pour Poufsouffle`;
+        pointsSerd.textContent = `${totalPoints.totalSerd} points pour Serdaigle`;
+    }
+}
+
+// Appelez la fonction pour charger les points au chargement de la page
+loadPointsFromLocalStorage();
+
 // Fonction qui prend 4 paramètres, le bouton, le nom de chaque input, les points qui s'affichent
 // après avoir été ajoutés et le total
 function addPoints(button, inputName, pointsElement, totalHouse) {
@@ -25,6 +46,7 @@ function addPoints(button, inputName, pointsElement, totalHouse) {
         totalPoints[totalHouse] += pointsAjoutes; // Ajoute les points au total de la maison
         pointsElement.textContent = `${totalPoints[totalHouse]} point${totalPoints[totalHouse] > 1 ? 's' : ''} pour ${inputName}`; // Affiche "point" ou "points"
 
+        savePointsToLocalStorage();
         rankHouse(); // Met à jour le classement
     });
 }
