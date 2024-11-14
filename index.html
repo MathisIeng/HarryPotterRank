@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>La coupe des maisons</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="img/Hogwarts-Logo.png" alt="Logo de Poudlard">
+        </div>
+        <h1>La coupe des maisons</h1>
+        <div>
+            <img src="img/Hogwarts-Logo.png" alt="Logo de Poudlard">
+        </div>
+    </header>
+    <main>
+        <section>
+            <!-- Gryffondor -->
+            <form class="container">
+                <div>
+                    <img src="img/Blason_des_Gryffondor.webp" alt="Blason des Gryffondor">
+                </div>
+                <input type="number" name="Gryffondor" placeholder="Points Gryffondor">
+                <button type="button" id="btnGry">
+                    <img src="img/plusGryf.png" alt="Ajouter Gryffondor">
+                </button>
+            </form>
+
+            <!-- Serpentard -->
+            <form class="container">
+                <div>
+                    <img src="img/Blason_des_Serpentard.webp" alt="Blason des Serpentard">
+                </div>
+                <input type="number" name="Serpentard" placeholder="Points Serpentard">
+                <button type="button" id="btnSerp">
+                    <img src="img/plusSerp.png" alt="Ajouter Serpentard">
+                </button>
+            </form>
+
+            <!-- Poufsouffle -->
+            <form class="container">
+                <div>
+                    <img src="img/Blason_des_Poufsouffle.webp" alt="Blason des Poufsouffle">
+                </div>
+                <input type="number" name="Poufsouffle" placeholder="Points Poufsouffle">
+                <button type="button" id="btnPouf">
+                    <img src="img/plusPouf.png" alt="Ajouter Poufsouffle">
+                </button>
+            </form>
+
+            <!-- Serdaigle -->
+            <form class="container">
+                <div>
+                    <img src="img/Blason_des_Serdaigle.webp" alt="Blason des Serdaigle">
+                </div>
+                <input type="number" name="Serdaigle" placeholder="Points Serdaigle">
+                <button type="button" id="btnSerd">
+                    <img src="img/plusSerr.png" alt="Ajouter Serdaigle">
+                </button>
+            </form>
+        </section>
+
+        <section id="housesRanking">
+            <h2>Classement</h2>
+            <div>
+                <div>
+                    <img src="img/Blason_des_Gryffondor.webp" alt="Blason des Gryffondor">
+                </div>
+                <p id="totalGry"></p>
+            </div>
+            <div>
+                <div>
+                    <img src="img/Blason_des_Serpentard.webp" alt="Blason des Serpentard">
+                </div>
+                <p id="totalSerp"></p>
+            </div>
+            <div>
+                <div>
+                    <img src="img/Blason_des_Poufsouffle.webp" alt="Blason des Poufsouffle">
+                </div>
+                <p id="totalPouf"></p>
+            </div>
+            <div>
+                <div>
+                    <img src="img/Blason_des_Serdaigle.webp" alt="Blason des Serdaigle">
+                </div>
+                <p id="totalSerd"></p>
+            </div>
+        </section>
+    </main>
+    <script src="script/main.js"></script>
+</body>
+
+</html>

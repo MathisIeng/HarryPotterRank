@@ -1,0 +1,95 @@
+header {
+  margin: auto;
+  width: 60%;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+}
+header div {
+  width: 15%;
+}
+header div img {
+  width: 100%;
+}
+header h1 {
+  color: white;
+  font-size: 5rem;
+}
+
+main {
+  display: flex;
+}
+main section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+main section .container {
+  display: flex;
+  margin: 15px 0px;
+}
+main section .container div {
+  width: 15%;
+}
+main section .container div img {
+  width: 100%;
+}
+main section .container input {
+  margin: 0px 20px;
+  width: 65%;
+  font-size: 4rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+}
+main section .container button {
+  width: 15%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+main section .container button img {
+  width: 100%;
+}
+main section {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+main section h2 {
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+}
+main section div {
+  display: flex;
+  align-items: center;
+}
+main section div div {
+  width: 15%;
+}
+main section div div img {
+  width: 100%;
+}
+main section div p {
+  color: white;
+  padding-left: 50px;
+  font-size: 3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "myfont";
+}
+
+@font-face {
+  font-family: "myfont";
+  src: url(../font/HARRYP__.TTF);
+}
+body {
+  background-color: grey;
+}/*# sourceMappingURL=style.css.map */

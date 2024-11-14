@@ -1,0 +1,18 @@
+@import "_header.scss";
+@import "_main.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "myfont";
+}
+
+@font-face {
+    font-family: "myfont";
+    src: url(../font/HARRYP__.TTF);
+}
+
+body {
+    background-color: grey;
+}

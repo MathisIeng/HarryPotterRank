@@ -1,0 +1,19 @@
+@import "var.scss";
+
+header {
+    margin: auto;
+    width: 60%;
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    div {
+        width: 15%;
+        img {
+            width: 100%;
+        }
+    }
+    h1 {
+        color: white;
+        font-size: 5rem;
+    }
+}
