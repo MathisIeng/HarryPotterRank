@@ -15,41 +15,22 @@ let totalPoints = {
     totalSerd: 0,
 }
 
-// Fonction pour enregistrer les points dans localStorage
-function savePointsToLocalStorage() {
-    localStorage.setItem('totalPoints', JSON.stringify(totalPoints)); // Sauvegarde dans le localStorage
+function loadPointsFromLocalStoragePerHouse() {
+    totalPoints.totalGry = parseInt(localStorage.getItem('totalPointsGry'));
+    totalPoints.totalSerp = parseInt(localStorage.getItem('totalPointsSerp'));
+    totalPoints.totalPouf = parseInt(localStorage.getItem('totalPointsPouf'));
+    totalPoints.totalSerd = parseInt(localStorage.getItem('totalPointsSerd'));
+
+    // Met à jour l'affichage
+    pointsGry.textContent = `${totalPoints.totalGry} points pour Gryffondor`;
+    pointsSerp.textContent = `${totalPoints.totalSerp} points pour Serpentard`;
+    pointsPouf.textContent = `${totalPoints.totalPouf} points pour Poufsouffle`;
+    pointsSerd.textContent = `${totalPoints.totalSerd} points pour Serdaigle`;
+
+    rankHouse();
 }
 
-// Fonction pour charger les points depuis localStorage
-function loadPointsFromLocalStorage() {
-    const savedPoints = localStorage.getItem('totalPoints');
-    if (savedPoints) {
-        totalPoints = JSON.parse(savedPoints); // Récupère les points et les affecte
-        // Met à jour l'affichage
-        pointsGry.textContent = `${totalPoints.totalGry} points pour Gryffondor`;
-        pointsSerp.textContent = `${totalPoints.totalSerp} points pour Serpentard`;
-        pointsPouf.textContent = `${totalPoints.totalPouf} points pour Poufsouffle`;
-        pointsSerd.textContent = `${totalPoints.totalSerd} points pour Serdaigle`;
-    }
-}
-
-// Appelez la fonction pour charger les points au chargement de la page
-loadPointsFromLocalStorage();
-
-// Fonction qui prend 4 paramètres, le bouton, le nom de chaque input, les points qui s'affichent
-// après avoir été ajoutés et le total
-function addPoints(button, inputName, pointsElement, totalHouse) {
-    button.addEventListener('click', (event) => {
-        event.preventDefault(); // Empêche le rechargement du formulaire
-        const input = document.querySelector(`input[name="${inputName}"]`);
-        const pointsAjoutes = parseInt(input.value) // Récupère la valeur de l'input (0 par défaut si vide)
-        totalPoints[totalHouse] += pointsAjoutes; // Ajoute les points au total de la maison
-        pointsElement.textContent = `${totalPoints[totalHouse]} point${totalPoints[totalHouse] > 1 ? 's' : ''} pour ${inputName}`; // Affiche "point" ou "points"
-
-        savePointsToLocalStorage();
-        rankHouse(); // Met à jour le classement
-    });
-}
+loadPointsFromLocalStoragePerHouse();
 
 // Fonction pour trier et réorganiser les maisons en fonction des points
 function rankHouse() {
@@ -72,7 +53,47 @@ function rankHouse() {
     });
 }
 
-addPoints(btnGry, 'Gryffondor', pointsGry, 'totalGry');
-addPoints(btnSerp, 'Serpentard', pointsSerp, 'totalSerp');
-addPoints(btnPouf, 'Poufsouffle', pointsPouf, 'totalPouf');
-addPoints(btnSerd, 'Serdaigle', pointsSerd, 'totalSerd');
+btnGry.addEventListener('click', () => {
+    const input = document.querySelector('input[name="Gryffondor"]');
+    const pointsAjoutes = parseInt(input.value) || 0;
+    totalPoints.totalGry += pointsAjoutes;
+    pointsGry.textContent = `${totalPoints.totalGry} points pour Gryffondor`;
+
+    // Sauvegarder uniquement les points de Gryffondor
+    localStorage.setItem('totalPointsGry', totalPoints.totalGry);
+
+    rankHouse();
+});
+
+btnSerp.addEventListener('click', () => {
+    const input = document.querySelector('input[name="Serpentard"]');
+    const pointsAjoutes = parseInt(input.value);
+    totalPoints.totalSerp += pointsAjoutes;
+    pointsSerp.textContent = `${totalPoints.totalSerp} points pour Serpentard`;
+
+    localStorage.setItem('totalPointsSerp', totalPoints.totalSerp);
+
+    rankHouse();
+});
+
+btnPouf.addEventListener('click', () => {
+    const input = document.querySelector('input[name="Poufsouffle"]');
+    const pointsAjoutes = parseInt(input.value);
+    totalPoints.totalPouf += pointsAjoutes;
+    pointsPouf.textContent = `${totalPoints.totalPouf} points pour Poufsouffle`;
+
+    localStorage.setItem('totalPointsPouf', totalPoints.totalPouf);
+
+    rankHouse();
+});
+
+btnSerd.addEventListener('click', () => {
+    const input = document.querySelector('input[name="Serdaigle"]');
+    const pointsAjoutes = parseInt(input.value);
+    totalPoints.totalSerd += pointsAjoutes;
+    pointsSerd.textContent = `${totalPoints.totalSerd} points pour Serdaigle`;
+
+    localStorage.setItem('totalPointsSerd', totalPoints.totalSerd);
+
+    rankHouse();
+});
