@@ -1,13 +1,17 @@
+// Je récupère tout mes boutons via leurs ID
 const btnGry = document.querySelector('#btnGry');
 const btnSerp = document.querySelector('#btnSerp');
 const btnPouf = document.querySelector('#btnPouf');
 const btnSerd = document.querySelector('#btnSerd');
 
+// Je récupère tout mes <p> de mon html qui ont chacun un ID
+// Et ce <p> affichera le total des points pour chaque maison
 const pointsGry = document.querySelector('#totalGry');
 const pointsSerp = document.querySelector('#totalSerp');
 const pointsPouf = document.querySelector('#totalPouf');
 const pointsSerd = document.querySelector('#totalSerd');
 
+// J'initialise les points de chaque maison à 0
 let totalPoints = {
     totalGry: 0,
     totalSerp: 0,
@@ -15,6 +19,8 @@ let totalPoints = {
     totalSerd: 0,
 }
 
+// Fonction qui permet de récupérer le total des points de mes maisons
+// Et le stock dans le local storage
 function loadPointsFromLocalStoragePerHouse() {
     totalPoints.totalGry = parseInt(localStorage.getItem('totalPointsGry'));
     totalPoints.totalSerp = parseInt(localStorage.getItem('totalPointsSerp'));
@@ -27,6 +33,8 @@ function loadPointsFromLocalStoragePerHouse() {
     pointsPouf.textContent = `${totalPoints.totalPouf} points pour Poufsouffle`;
     pointsSerd.textContent = `${totalPoints.totalSerd} points pour Serdaigle`;
 
+    // On pense bien à rappeler notre fonction de rank afin que le classement
+    // Ne change pas même après refresh de la page
     rankHouse();
 }
 
@@ -65,14 +73,16 @@ btnGry.addEventListener('click', () => {
     rankHouse();
 });
 
+// Ci dessous on va répéter 4 fois addEventListener pour chaque bouton qui correspond à la maison
 btnSerp.addEventListener('click', () => {
-    const input = document.querySelector('input[name="Serpentard"]');
-    const pointsAjoutes = parseInt(input.value);
-    totalPoints.totalSerp += pointsAjoutes;
-    pointsSerp.textContent = `${totalPoints.totalSerp} points pour Serpentard`;
+    const input = document.querySelector('input[name="Serpentard"]'); // On récupère le name de mon input
+    const pointsAjoutes = parseInt(input.value); // Converti la valeur de l'input en nombre
+    totalPoints.totalSerp += pointsAjoutes; // On ajoute au points de Serpentard les nouveaux points entrés
+    pointsSerp.textContent = `${totalPoints.totalSerp} points pour Serpentard`; // On affiche le total dans notre <p>
 
+    // Mettre à jour les points totaux de Serpentard dans le localStorage
     localStorage.setItem('totalPointsSerp', totalPoints.totalSerp);
-
+    // On appelle la fonction de classement pour mettre à jour le rank de nos maisons
     rankHouse();
 });
 
