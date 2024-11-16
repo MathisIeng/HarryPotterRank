@@ -63,11 +63,11 @@ function rankHouse() {
 
 btnGry.addEventListener('click', () => {
     const input = document.querySelector('input[name="Gryffondor"]');
-    const pointsAjoutes = parseInt(input.value) || 0;
+    const pointsAjoutes = parseInt(input.value);
     totalPoints.totalGry += pointsAjoutes;
     pointsGry.textContent = `${totalPoints.totalGry} points pour Gryffondor`;
 
-    // Sauvegarder uniquement les points de Gryffondor
+    
     localStorage.setItem('totalPointsGry', totalPoints.totalGry);
 
     rankHouse();
